@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Savings Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div style="text-align: right; margin: 1rem 0;">
+    <button id="editToggleBtn">Edit Record</button>
+    <select id="editSelect" style="display: none;"></select>
+    <button id="editLoadBtn" style="display: none;">Load</button>
+    <button id="editDeleteBtn" style="display: none;">Delete</button>
+  </div>
+  <!-- ========== TRANSACTIONS SECTION ========== -->
+  <section id="transactions">
+    <h2>Transactions</h2>
+
+    <div class="columns">
+      <!-- Incomes table -->
+      <div>
+        <h3>Income</h3>
+        <table id="incomeTable">
+          <thead>
+            <tr><th>Description</th><th>Date</th><th>Amount</th></tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr><td colspan="2">Total Income</td><td id="incomeTotal">$0.00</td></tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Expenses table -->
+      <div>
+        <h3>Expenses</h3>
+        <table id="expenseTable">
+          <thead>
+            <tr><th>Description</th><th>Date</th><th>Amount</th></tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr><td colspan="2">Total Expenses</td><td id="expenseTotal">$0.00</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <h3>Total Available: <span id="netTotal">$0.00</span></h3>
+    </div>
+
+    <!-- simple transaction form -->
+    <form id="txForm">
+      <input type="text" id="txDesc" placeholder="Description" required />
+      <input type="date" id="txDate" required />
+      <input type="number" id="txAmount" placeholder="Amount" step="0.01" required />
+      <select id="txType">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <h2>Income vs. Expense Trend</h2>
+  <canvas id="trendChart" style="width: 100; height: 100;"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="transactions.js"></script>
+</body>
+</html>
